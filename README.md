@@ -9,4 +9,4 @@ This repositry is a gathering of different types of shaders that I'm implementin
 
 <p>Added the possibility to display the seeds as points to get a clearer visualization if needed. Here with 200 respectively 500 seeds.</p>
 
-<img src="img/Voronoi_v1seeds.PNG" width = "400" height = "400"/><img src="img/Voronoi500seeds.PNG" width = "400" height = "400"/>
+<img src="img/Voronoi_v1Seeds.PNG" width = "400" height = "400"/><img src="img/Voronoi500seeds.PNG" width = "400" height = "400"/>
