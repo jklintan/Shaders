@@ -24,19 +24,20 @@ float random(vec2 st) {
 
 void main()
 {
+	const int SEEDS = 500;
 
 	//Get the coord. position on the window
     vec2 thePosition = gl_FragCoord.xy/resolution.xy;
 
 	//Set the backgroundcolor
-	vec3 color = vec3(0.2);
+	vec3 color = vec3(0);
 
     // Store the points in a vector
-    vec2 point[200];
+    vec2 point[SEEDS];
     float minDist = 1;  
 
     // Iterate through the points positions
-    for (int i = 0; i < 200; i++) {
+    for (int i = 0; i < SEEDS; i++) {
 		
 		//If moving
 		//point[i] = random2(vec2(float(i),float(i)), sin(time/2000000));
@@ -53,6 +54,9 @@ void main()
 
     //Highlight the color for the minimum distance
     color += minDist*enhanceFactor;
+
+	//Display the seeds
+	color += (1.-step(.002, minDist))*0.3;
 
 	//Set the output color
     FragColor = vec4(color,1.0);
