@@ -10,3 +10,7 @@ This repositry is a gathering of different types of shaders that I'm implementin
 <p>A further update was added with the possibility to display the seeds as points to get a clearer visualization if needed. Here with a smaller and larger number of generated seeds. </p>
 
 <img src="img/Voronoi_v1Seeds.PNG" width = "400" height = "400"/><img src="img/Voronoi500seeds.PNG" width = "400" height = "400"/>
+
+<p>Implemented the pattern on a sphere and added the Phong local reflection model to the scene. </p>
+
+<img src="img/voronoi_light.PNG" width = "600" height = "600"/>
