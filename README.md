@@ -28,7 +28,7 @@ The Mandelbrot Set is the set of complex numbers $c$ for which the function $f_c
 By increasing the number of iterations per pixel over time, it is possible to create an animated version of the set as can be seen below.
 
 <center>
-<img src="img/mandelbrot.GIF" width = "600" height = "500"/>
+<img src="img/mandelbrot.gif" width = "600" height = "500"/>
 </center>
 
 The Mandelbrot set is popular for having very artistic looking fractals, the following two images have been created by zooming in on specific areas of the set and changing the background color for the image to the left.
