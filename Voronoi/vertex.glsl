@@ -8,10 +8,10 @@ out vec3 position;
 
 void main(){
 
-	//Set the position for the vertices
+    //Set the position for the vertices
     gl_Position = vec4(inPos, 1.0);
 
     //Send to fragment shader
-	position = inPos;
+    position = inPos;
     normals = inNorm;
 }

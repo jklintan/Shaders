@@ -33,28 +33,28 @@ float random(vec2 st) {
 void main()
 {
     //Ambient lightning
-	vec3 Ia = ambientStrength*lightColor;
+    vec3 Ia = ambientStrength*lightColor;
 
-	//Diffuse color
-	vec3 norm = normalize(normals);
-	vec3 lightDir = normalize(lightDirection - position);
-	float diff = max(dot(norm, lightDir), 0.0);
-	vec3 Id = diff*lightColor; //Light model
+    //Diffuse color
+    vec3 norm = normalize(normals);
+    vec3 lightDir = normalize(lightDirection - position);
+    float diff = max(dot(norm, lightDir), 0.0);
+    vec3 Id = diff*lightColor; //Light model
 
     //Specular lighting
-	vec3 viewDir = normalize( lightDirection - position );
-	vec3 reflectDir = max(reflect(-lightDir, norm), 0.0);
-	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 4);
-	vec3 Is = 10 * specularStrength * spec * lightColor;
+    vec3 viewDir = normalize( lightDirection - position );
+    vec3 reflectDir = max(reflect(-lightDir, norm), 0.0);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 4);
+    vec3 Is = 10 * specularStrength * spec * lightColor;
 
     //Voronoi pattern
-	const int SEEDS = 600;
+    const int SEEDS = 600;
 
-	//Get the coord. position on the window
+    //Get the coord. position on the window
     vec2 thePosition = gl_FragCoord.xy/resolution.xy;
 
-	//Set the backgroundcolor
-	vec3 color = vec3(0);
+    //Set the backgroundcolor
+    vec3 color = vec3(0);
 
     // Store the points in a vector
     vec2 point[SEEDS];
@@ -63,13 +63,13 @@ void main()
     // Iterate through the points positions
     for (int i = 0; i < SEEDS; i++) {
 		
-		//If moving
-		//point[i] = random2(vec2(float(i),float(i)), sin(time/20000));
+        //If moving
+        //point[i] = random2(vec2(float(i),float(i)), sin(time/20000));
 
-		//If not moving
-		point[i] = random2(vec2(float(i), float(i)), i*i/323132);
+        //If not moving
+        point[i] = random2(vec2(float(i), float(i)), i*i/323132);
 		
-		//Calculate the distance between the coordinate and the current point
+        //Calculate the distance between the coordinate and the current point
         float dist = distance(thePosition, point[i]);
 
         //Update the minimum distance only if the new distance is smaller
@@ -79,9 +79,9 @@ void main()
     //Highlight the color for the minimum distance
     color += minDist * enhanceFactor;
 
-	//Display the seeds
-	//color += (1.-step(.002, minDist))*0.7;
+    //Display the seeds
+    //color += (1.-step(.002, minDist))*0.7;
 
-	//Set the output color
+    //Set the output color
     FragColor = (1.5 * vec4(Ia, 1.0) + 10 * vec4(Id, 1.0) + 0.7 * vec4(Is, 1.0)) * vec4(objectColor, 1.0) * vec4(color, 1.0);
 }
