@@ -13,5 +13,5 @@ void main(){
 
     //Send to fragment shader
 	position = inPos;
-    normals = inNorm; 
-}  
+    normals = inNorm;
+}

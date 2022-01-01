@@ -10,7 +10,7 @@ uniform vec2 resolution;
 
 in vec3 normals;
 in vec3 position;
-out vec4 FragColor;  
+out vec4 FragColor;
 
 //Lightning model according to the Phong lighting model
 float ambientStrength = 0.8;
@@ -32,8 +32,6 @@ float random(vec2 st) {
 
 void main()
 {
-    //Light model
-    
     //Ambient lightning
 	vec3 Ia = ambientStrength*lightColor;
 
@@ -44,11 +42,10 @@ void main()
 	vec3 Id = diff*lightColor; //Light model
 
     //Specular lighting
-	vec3 viewDir = normalize(lightDirection - position);
+	vec3 viewDir = normalize( lightDirection - position );
 	vec3 reflectDir = max(reflect(-lightDir, norm), 0.0);
 	float spec = pow(max(dot(viewDir, reflectDir), 0.0), 4);
-	vec3 Is = 10*specularStrength * spec * lightColor;
-
+	vec3 Is = 10 * specularStrength * spec * lightColor;
 
     //Voronoi pattern
 	const int SEEDS = 600;
@@ -80,23 +77,11 @@ void main()
     }
 
     //Highlight the color for the minimum distance
-    color += minDist*enhanceFactor;
+    color += minDist * enhanceFactor;
 
 	//Display the seeds
 	//color += (1.-step(.002, minDist))*0.7;
 
 	//Set the output color
-    FragColor = (1.5*vec4(Ia, 1.0) + 10*vec4(Id, 1.0) + 0.7*vec4(Is, 1.0))*vec4(objectColor, 1.0)*vec4(color, 1.0);
+    FragColor = (1.5 * vec4(Ia, 1.0) + 10 * vec4(Id, 1.0) + 0.7 * vec4(Is, 1.0)) * vec4(objectColor, 1.0) * vec4(color, 1.0);
 }
-
-
-
-
-
-
-
-//Thoughts
-//Want to be able to locate a preset number of points
-//Send in uniform variables by using a menu interface
-//Extend by the possibility to add roughness to the surface??
-
