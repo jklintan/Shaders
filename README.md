@@ -23,7 +23,7 @@ Implemented the pattern on a sphere and added the Phong local reflection model t
 </center>
 
 ## Mandelbrot Set
-The Mandelbrot Set is the set of complex numbers $c$ for which the function $f_c(z)=z^2+c$ does not diverge to infinity when iterated from $z=0$ (source [wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set)).
+The Mandelbrot Set is the set of complex numbers `c` for which the function `f(z)=z^2+c` does not diverge to infinity when iterated from `z=0` (source [wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set)).
 
 By increasing the number of iterations per pixel over time, it is possible to create an animated version of the set as can be seen below.
 
