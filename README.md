@@ -2,7 +2,8 @@
 This repositry is a gathering of different types of shaders that I'm implementing to gain better knowledge in coding in GLSL. I'm using my own template in OpenGL where I create a simple plane or geometry to display the procedural material or lightning model that I create in my shaders.
 
 - [Voronoi Pattern](##Voronoi-Pattern)
-- [Mandelbrot](##Mandelbrot-Set)
+- [Julia Fractals](##Julia-Set)
+- [Mandelbrot Fractals](##Mandelbrot-Set)
 
 
 ## Voronoi Pattern 
@@ -22,8 +23,40 @@ Implemented the pattern on a sphere and added the Phong local reflection model t
 <img src="img/voronoi_light.PNG" width = "600" height = "600"/>
 </center>
 
+## Julia Set
+In general, the Julia and Mandelbrot set is the boundary between points in the complex number plane ([src](https://www.britannica.com/science/Julia-set)). In this shader, I have used the set of complex numbers `c` for which the function `f(z)=z^2+c` does not diverge to infinity when iterated from a fixed complex number `c` ([src](https://en.wikipedia.org/wiki/Julia_set)).
+
+The fractals that can be generated from the Julia set is many and very artistic looking. By altering the complex number from which we iterate, a number of different appearances can be retrieved as can be seen below.
+
+<center>
+<img src="img/julia1.png"/>
+
+The Julia set for the complex number c = -0.4 + 0.6i.
+
+<img src="img/julia5.png"/>
+
+The Julia set for the complex number c = -0.70176 - 0.3842i.
+
+<img src="img/julia6.png"/>
+
+The Julia set for the complex number c = 0.285 + 0.01i.
+
+<img src="img/julia7.png"/>
+
+The Julia set for the complex number c = -0.835 - 0.2321i.
+
+<img src="img/dendrite.png"/>
+
+This is a Dendrite fractal, which is on the boundary of the Mandelbrot set, generated using c = i.
+
+<img src="img/douadys-rabbit-fractal.png"/>
+
+The Douady's rabbit fractal, generated using c = -0.123 + 0.745i.
+[The Douady rabbit on Wikipedia](https://en.wikipedia.org/wiki/Douady_rabbit).
+</center>
+
 ## Mandelbrot Set
-The Mandelbrot Set is the set of complex numbers `c` for which the function `f(z)=z^2+c` does not diverge to infinity when iterated from `z=0` (source [wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set)).
+The Mandelbrot set is a subset of the Julia set, where the Mandelbrot set is those complex numbers, c, for which the Julia set is connected ([src](https://en.wikipedia.org/wiki/Mandelbrot_set). The Mandelbrot Set shader is similar to the one for the Julia set, we still use the function `f(z)=z^2+c` to generate the expression but this time iterate from `z=0`, e.g. the expression used is `f(z)=z^2`.
 
 By increasing the number of iterations per pixel over time, it is possible to create an animated version of the set as can be seen below.
 
