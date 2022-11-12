@@ -28,9 +28,7 @@ vec3 light_position = vec3(-3.0f, 3.0f, 5.0f);
 vec3 light_intensity = vec3(0.4f, 0.4f, 0.4f);
 vec3 camera_position = vec3(0.0f, 0.0f, 2.0f);
 
-
-void main()
-{
+void main() {
 	vec3 light_direction = light_position - position;
 	light_intensity = normalize(light_intensity);
 
@@ -46,7 +44,7 @@ void main()
 	vec3 N = normalize(normals);
 	vec3 L = normalize(light_direction);
 	float LdotN = dot(L, N);
-    vec3 Id = k_diffuse * clamp(LdotN, 0.0, 1.0)  * light_intensity;
+	vec3 Id = k_diffuse * clamp(LdotN, 0.0, 1.0) * light_intensity;
 
 	// Specular reflections.
 	// The same is valid as for diffuse reflections, that
@@ -58,12 +56,11 @@ void main()
 	// Double check that the light source is in front of the
 	// current pixel, otherwise we can get an error where
 	// the back of our object gets lit as well.
-	if (LdotN > 0.0)
-    {
+	if(LdotN > 0.0) {
 		vec3 R = clamp(reflect(-L, N), 0.0, 1.0);
 		vec3 V = normalize(camera_position - position);
 		float RdotV = dot(R, V);
-		Is = k_specular *  pow(max(RdotV, 0.0), alpha) * light_intensity;
+		Is = k_specular * pow(max(RdotV, 0.0), alpha) * light_intensity;
 	}
 
 	// Add together all the reflection terms and set fragment colors.
