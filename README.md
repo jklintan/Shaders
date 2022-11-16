@@ -5,6 +5,7 @@ This repositry is a gathering of different types of shaders that I'm implementin
 - [Julia Fractals](##Julia-Set)
 - [Mandelbrot Fractals](##Mandelbrot-Set)
 - [Phong Shading](##Phong-Shading)
+- [Toon Shader](##Toon-Shader)
 
 
 ## Voronoi Pattern 
@@ -94,3 +95,14 @@ You can also see the difference of altering of the constant `alpha`. To the left
 An important thing when calculating the specular reflection term is to check that the dot product between the light direction and the normal is positive. If it is not and we still apply a specular term in this case, we will end up adding specular reflections in areas that should not get any light and are essentially behind the light source or hidden. To showcase this, I added a red color for fragments when the dot product is negative:
 
 <img src="img/check-specular-reflections.png" width = "100%"/>
+
+## Toon Shader
+This is a simple toon shader that creates an outline around an object and 3 different levels of colors, including specular highlights. A small example can be seen below when applied to the Monkey mesh (obtained from Blender) and a simple sphere. Note that in the right image, the specular highlights have been set to 0.
+
+<img src="img/toon1.png" width = "49%"/> <img src="img/toon2.png" width = "49%"/>
+
+Most of the functionality in this shader is done by simple `smoothstep` functions, both for the outline and for creating different levels of the colors. The values for the edges in `smoothstep` can be altered to emphasize certain effects or for moving the limiter of where the color change is done.
+
+The specular term is inspired by the Blinn-Phong reflection model and calculates the specular term in that way, but in order to keep the toon effect, it is only added if the specular value is below a certain threshold. With the specular exponent as in Blinn-Phong, we can still simulate shiny and non-shiny materials, as can be seen below where the specular exponent is set to a low value to the left, and to a high value to the right.
+
+<img src="img/toon-non-shiny.png" width = "49%"/> <img src="img/toon-shiny.png" width = "49%"/>
