@@ -1,11 +1,11 @@
 # Coding of Shaders
 This repositry is a gathering of different types of shaders that I'm implementing to gain better knowledge in coding in GLSL. I'm using my own template in OpenGL where I create a simple plane or geometry to display the procedural material or lightning model that I create in my shaders.
 
-- [Voronoi Pattern](##Voronoi-Pattern)
-- [Julia Fractals](##Julia-Set)
-- [Mandelbrot Fractals](##Mandelbrot-Set)
-- [Phong Shading](##Phong-Shading)
-- [Toon Shader](##Toon-Shader)
+- [Voronoi Pattern](#voronoi-pattern)
+- [Julia Fractals](#julia-set)
+- [Mandelbrot Fractals](#mandelbrot-set)
+- [Phong Shading](#phong-shading)
+- [Toon Shader](#toon-shader)
 
 
 ## Voronoi Pattern 
