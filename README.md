@@ -5,6 +5,7 @@ This repositry is a gathering of different types of shaders that I'm implementin
 - [Julia Fractals](#julia-set)
 - [Mandelbrot Fractals](#mandelbrot-set)
 - [Phong Shading](#phong-shading)
+- [Blinn-Phong Shading](#blinn-phong-shading)
 - [Toon Shader](#toon-shader)
 
 
@@ -95,6 +96,18 @@ You can also see the difference of altering of the constant `alpha`. To the left
 An important thing when calculating the specular reflection term is to check that the dot product between the light direction and the normal is positive. If it is not and we still apply a specular term in this case, we will end up adding specular reflections in areas that should not get any light and are essentially behind the light source or hidden. To showcase this, I added a red color for fragments when the dot product is negative:
 
 <img src="img/check-specular-reflections.png" width = "100%"/>
+
+## Blinn-Phong Shading
+This shader implements the Blinn-Phong reflection model for surface shading. This reflection model is similar to the Phong reflection model but by utilising the so called half-vector, we are able to replace the `R•V` expression for the specular highlights to be `N•H` (where H is the half-way vector). By incorporating the normals in the expression, we will get specular highlights that better reflects how an item looks in the real world, since it will no longer remain circular but instead turn elliptical when the viewer looks at the item from a steeper angle. For more explanations about the vector math and the equations behind the shader, see the [Blinn-Phong Reflection Model](https://en.wikipedia.org/wiki/Blinn%E2%80%93Phong_reflection_model).
+
+In this simple shader (similar to the Phong reflection model), I have modelled a single light source at a static point in 3D space, but the model can easily be extended to bring in the light positions from the main OpenGL scene instead. Then the diffuse and specular terms should be applied as a sum per light source.
+
+Since the ambient and diffuse light terms remain the same as for the Phong reflection model, only the specular light is showed below.
+
+### Specular light
+With the replacement of the specular term using the half-way vector, we can see the difference between the Phong reflection model (to the left), and the Blinn-Phong reflection model (to the right) for the same settings.
+
+<img src="img/phong.png" width = "49%"/> <img src="img/blinn-phong.png" width = "49%"/>
 
 ## Toon Shader
 This is a simple toon shader that creates an outline around an object and 3 different levels of colors, including specular highlights. A small example can be seen below when applied to the Monkey mesh (obtained from Blender) and a simple sphere. Note that in the right image, the specular highlights have been set to 0.
